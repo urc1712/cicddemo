@@ -23,7 +23,12 @@ pipeline {
           }
         }
         
-        
+        stage('deploy') {
+            steps {
+                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: '/home/urc/cicddemo/inventories/prod', playbook: '/home/urc/cicddemo/main.yml'
+            }
+            
+        }
          
         
         
