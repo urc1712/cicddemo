@@ -25,7 +25,7 @@ pipeline {
         
         stage('deploy') {
             steps {
-                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ci-cd/inventories/prod', playbook: '/var/lib/jenkins/workspace/ci-cd/main.yml'
+                ansiblePlaybook disableHostKeyChecking: true, installation: 'ansible', inventory: '/var/lib/jenkins/workspace/ci-cd/inventories/prod/hosts', playbook: '/var/lib/jenkins/workspace/ci-cd/main.yml'
             }
             
         }
