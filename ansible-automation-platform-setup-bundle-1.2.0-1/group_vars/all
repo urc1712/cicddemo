@@ -1,0 +1,9 @@
+---
+tower_package_name: 'ansible-tower'
+tower_package_version: '3.8.0'
+tower_package_release: '1'
+
+# TODO(spredzy): To revisit when packaging is done
+# automationhub_package_name: '%AH_NAME%'
+# automationhub_package_version: '%AH_VERSION%'
+# automationhub_package_release: '%AH_RELEASE%'

@@ -1,6 +1,9 @@
 ---
+
 - name: restart tomcat
   service: name=tomcat state=restarted
-
+- name: reload systemctl 
+  command: systemctl daemon-reload
 - name: restart iptables
   service: name=iptables state=restarted
+  

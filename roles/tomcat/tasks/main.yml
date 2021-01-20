@@ -1,6 +1,7 @@
 ---
-- name: Install Java 1.7
-  yum: name=java-1.7.0-openjdk state=present
+- name: Install Java 1.8
+  apt: update_cache=yes name=openjdk-8-jdk state=present
+  
 
 - name: add group "tomcat"
   group: name={{tomcat_group}}
@@ -41,10 +42,18 @@
   notify: restart tomcat
 
 - name: Install Tomcat init script
-  copy: src=tomcat-initscript.sh dest=/etc/init.d/tomcat mode=0755
+  copy: src=tomcat.service  dest=/etc/systemd/system/ mode=0755
+- name:  reload
+  systemd: 
+    name: tomcat
+    enabled: yes
+    state: restarted
+    daemon_reload: true
+  become: true
+  
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
 
 - name: wait for tomcat to start
-  wait_for: port={{http_port}}
+  wait_for: port={{http_port}}i
